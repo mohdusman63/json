@@ -1,0 +1,27 @@
+
+const InsertAccount=new Account({
+        profile_id:req.body.profile_id,
+        child:req.body.child      //schema type array
+    })
+
+{
+ "profile_id": "5fc09c0ba7bb9721ec7c5006",
+    "child":[
+        {
+           "_id":"5fc09c0ba7bb9721ec7c5006",
+            "name":"renu",
+            "age":10
+        },
+          {
+            "_id":"5fc09c0ba7bb9721ec7c5006",
+            "name":"sonu",
+            "age":11
+          },
+            {
+            "_id":"5fc09c0ba7bb9721ec7c5006",
+            "name":"rima",
+            "age":9
+            }
+]
+ }
+ 
