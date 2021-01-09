@@ -27,36 +27,14 @@ const InsertAccount=new Account({
  
  
  
- Viewer
-Text
- 
-Paste	
- 
- 
-Copy	
- 
- 
-Format	
- 
- 
-Remove white space	
- 
- 
-Clear	
- 
- 
-Load JSON data	
- 
- 
-About	
- 
+
 
    {
      "users":
-     {
-     "name":"usman",
-     "email":"abc@gmail.com"
-      },
+            {
+            "name":"usman",
+            "email":"abc@gmail.com"
+             },
       "task":
           [
               {
@@ -67,7 +45,7 @@ About
               "task_name":"braekfast",
               "time":"morning"
                },
-                {
+               {
               "task_name":"lunch",
               "time":"afternoon"
                }
@@ -77,22 +55,7 @@ About
 }
 
 
-Online JSON Viewer
-About JSON
-JSON, short for JavaScript Object Notation, is a lightweight computer data interchange format. JSON is a text-based, human-readable format for representing simple data structures and associative arrays (called objects).
 
-Read more: json.org, wikipedia, google
-
-In JSON, they take on these forms
-JSON object
-
-JSON array
-
-JSON value
-
-JSON string
-
-JSON number
 Example
 {
     "firstName": "John",
