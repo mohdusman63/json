@@ -1,0 +1,29 @@
+db.getCollection('crickets').find({},
+                {"players.playerName":1 })
+			  
+			  
+db.getCollection('crickets').find({},
+                 {players:{ 
+				 
+		            "$elemMatch" : 
+					           {"status" : "baating"} 
+					     }
+                    })
+						  
+db.getCollection('crickets').aggregate([
+        {$match:{"team_name":"taem1"}},
+            {$project:{
+                 "players":
+                    {
+                        "playerName":1,
+                        "_id":1,
+                        "status":1
+                     }
+            
+            }}  
+          ])
+
+
+
+		  
+						 
