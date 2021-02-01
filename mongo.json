@@ -25,5 +25,70 @@ db.getCollection('crickets').aggregate([
 
 
 
+db.getCollection('setup_stores').find({"_id" : ObjectId("5f9f87bd3097f1251c6e8093")},{mobile:1})
+
+
+
+ let fetchData=await addProductModel.aggregate([
+     {$match:{ "_id" :mongoose.Types.ObjectId(req.body.product_id)}},
+     {$lookup:{from:"catogries",localField:"catogry_id",foreignField:"_id",as:"catogry"}},
+     {$unwind:{path:'$catogry',preserveNullAndEmptyArrays:true}},
+     {$lookup:{from:"subcatogries",localField:"catogry_id",foreignField:"catogry_id",as:"sub_catogry"}},
+     {$unwind:{path:'$sub_catogry',preserveNullAndEmptyArrays:true}},
+     {$project:{
+         _id:0,
+         product_name:1,
+         mrp:1,
+         piece:1,
+         size:1,
+         color:1,
+         catogry_name:'$catogry.catogry_name',
+         sub_catogry_name:'$sub_catogry.sub_catogry_name',
+
+       }}
+
+
+  ])
+
+
+
+db.getCollection('add_products').aggregate([
+         {$match:{ "merchant_id" : ObjectId("5fa0f559a946991f6cff3702")}},
+          { $group: { "_id": "$catogry_id"} },
+          {$lookup:{from:"catogries",localField:"catogry_id",foreignField:"_id",as:"catogry_name"}},
+
+
+       ]).pretty()
+	   
+	   
+	   db.getCollection('add_products').aggregate([
+         {$match:{ "_id" : ObjectId("5fa0f6b2a946991f6cff3704")}},
+         {$lookup:{from:"catogries",localField:"catogry_id",foreignField:"_id",as:"catogry_name"}},
+        
+           {$lookup:{from:"subcatogries",localField:"catogry_id",foreignField:"catogry_id",as:"sub_catogry_name"}},
+          
+
+       ]).pretty()
+	   
+	   
+	
+	   
+	   
+	   
+	   
+	   new branch --->
+	   $ git checkout -b dev
+       Switched to a new branch 'dev'
+       $ git push origin dev
+	    dev----->master
+	    git checkout main
+		
+		git branch [branchName]
+
+
+
+
+
+
 		  
 						 
