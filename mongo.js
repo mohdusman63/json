@@ -73,7 +73,40 @@ db.getCollection('add_products').aggregate([
 	   
 	
 	   
-	   
+	   db.getCollection('services').aggregate([
+             {$lookup: {from: 'locations',localField: 'parent_location.location_id',foreignField: '_id',  as: 'location_details'}},
+             {$project:{
+               location_details:'$location_details.location_name',
+               permalink: 1,
+               featured_image: 1,
+               section_image: 1,
+               seo_description: 1,
+               parent_location:{
+                            $cond: { if: {
+                                $ne: [ "$location_details.location_name", [] ] },
+                                then: '$location_details.location_name'+'$services.parent_location', else: '' }
+                        },
+               seo_title: 1,
+               index: 1,
+           
+             }}])
+
+
+
+
+ ServiceModel.aggregate([
+                {$match: where},
+                {
+                    $lookup: {
+                        from: 'locations',
+                        localField: 'parent_location.location_id',
+                        foreignField: '_id',
+                        as: 'location_details'
+                    }
+                },
+                {
+                    $project: {
+                        location_details: '$location_details.location_name',
 	   
 	   
 	   new branch --->
